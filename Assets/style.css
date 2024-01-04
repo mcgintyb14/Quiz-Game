@@ -1,0 +1,16 @@
+*/ {
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+
+#timer {
+    position:absolute;
+    left: 400px;
+}
+
+#question {
+    font-size: 30px;
+    
+}
