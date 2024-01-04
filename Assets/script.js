@@ -27,6 +27,35 @@
         answer: 0
       },
   ];
+
+  let currentQuestionIndex = 0;
+  let countdownInterval;
+  
+  // Function to start the quiz
+  function startQuiz() {
+    currentQuestionIndex = 0;
+    displayQuestion();
+    countdown();
+  }
+  
+  // Function to display the current question and choices
+  function displayQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    const questionElement = document.getElementById('question');
+    questionElement.textContent = currentQuestion.question;
+  
+    const choicesElement = document.getElementById('choices');
+    choicesElement.innerHTML = '';
+  
+    currentQuestion.choices.forEach(function (choice, index) {
+      const choiceButton = document.createElement('button');
+      choiceButton.textContent = choice;
+      choiceButton.onclick = function () {
+        checkAnswer(index);
+      };
+      choicesElement.appendChild(choiceButton);
+    });
+  }
   
 
   
