@@ -83,6 +83,28 @@
           displayQuestion();
         }
       }
+
+    // Function to handle the countdown timer
+  function countdown() {
+    let secondsRemaining = 60; // Timer is set to 60 seconds
+  
+    function updateTimer() {
+      const timerElement = document.getElementById('timer');
+      timerElement.textContent = 'Time Remaining: ' + secondsRemaining + 's';
+  
+      if (secondsRemaining === 0) {
+        checkAnswer(-1); // If no answer is selected, it will timeout
+      }
+  
+      secondsRemaining--;
+    }
+  
+    countdownInterval = setInterval(updateTimer, 1000);
+  }
+  
+  // Start the quiz when the page loads
+  startQuiz();
+
   
 
   
