@@ -1,30 +1,49 @@
+  // Setting variables to store the number of correct and incorrect answers
+var CorrectAnswers = 0;
+
+  
   // Questions array with objects containing question, choices, and answer
   // The third line is the Index of the correct answer in the choices array
   const questions = [
     {
-      question: 'What is the capital of France?',
-      choices: ['London', 'Paris', 'Rome', 'Madrid'],
+      question: 'What is the language used to structure a webpage?',
+      choices: ['CSS', 'HMTL', 'Javascript', 'Python'],
       answer: 1 
     },
     {
-      question: 'Which planet is known as the Red Planet?',
-      choices: ['Mars', 'Jupiter', 'Saturn', 'Uranus'],
+      question: 'What keyword is used to declare variables in JavaScript?',
+      choices: ['var', 'declare', 'int', 'string'],
       answer: 0
     },
     {
-        question: 'Which planet is known as the Red Planet?',
-        choices: ['Mars', 'Jupiter', 'Saturn', 'Uranus'],
+        question: 'Which tag is used to define an unordered list in HTML?',
+        choices: ['ul', 'ol', 'li', 'list'],
         answer: 0
       },
       {
-        question: 'Which planet is known as the Red Planet?',
-        choices: ['Mars', 'Jupiter', 'Saturn', 'Uranus'],
+        question: 'What Git command is used to create a new branch?',
+        choices: ['git push', 'git branch', 'git commit', 'git merge'],
+        answer: 1
+      },
+      {
+        question: 'Which of the following is not a primitive data type in Java?',
+        choices: ['double', 'string', 'boolean', 'int'],
+        answer: 4
+      },
+      {
+        question: 'Which keyword is used to declare a constant in Java?',
+        choices: ['final', 'static', 'const', 'var'],
+        answer: 2
+      },
+      {
+        question: 'Which CSS property is used to create rounded corners on an element?',
+        choices: ['border-radius', 'corner-radius', 'round-corner', 'curve'],
         answer: 0
       },
       {
-        question: 'Which planet is known as the Red Planet?',
-        choices: ['Mars', 'Jupiter', 'Saturn', 'Uranus'],
-        answer: 0
+        question: 'Which CSS pseudo-class is used to select an element when it is being hovered over by the mouse pointer?',
+        choices: [':active', ':hover', ':focus', ':target'],
+        answer: 2
       },
   ];
 
@@ -52,30 +71,31 @@
 
 // Defines a new element for the choices of answers which targets the 'choices' ID from the HTML code
 // It then adds text to the targeted element  
-    const choicesElement = document.getElementById('choices');
-    choicesElement.textcontent = '';
+  const choicesElement = document.getElementById('choices');
+  choicesElement.innerHTML = ''; 
   
-    currentQuestion.choices.forEach(function (choice, index) {
-      const choiceButton = document.createElement('button');
-      choiceButton.textContent = choice;
-      choiceButton.onclick = function () {
-        checkAnswer(index);
-      };
-      choicesElement.appendChild(choiceButton);
-    });
-  }
+  currentQuestion.choices.forEach(function (choice, index) {
+    const choiceButton = document.createElement('button');
+    choiceButton.textContent = choice;
+    choiceButton.onclick = function () {
+      checkAnswer(index);
+    };
+    choicesElement.appendChild(choiceButton);
+  });
+}
 
     // Function to check the selected answer and whether it matches the index of the answer defined in the questions array
     // Using an alert for now to ensure function works, will revert to storing the tally to an array
     function checkAnswer(selectedIndex) {
         const currentQuestion = questions[currentQuestionIndex];
         if (selectedIndex === currentQuestion.answer) {
-          alert('Correct answer!');
+          CorrectAnswers++;
         } else {
           alert('Incorrect answer!');
         }
       
         currentQuestionIndex++;
+        
         if (currentQuestionIndex < questions.length) {
           displayQuestion();
         } else {
@@ -104,6 +124,57 @@
   
   // Start the quiz when the page loads
   startQuiz();
+
+  // Function to handle the end of the quiz
+function endQuiz() {
+  clearInterval(countdownInterval); // Stop the countdown timer
+
+  const quizElement = document.getElementById('quiz');
+  quizElement.innerHTML = ''; // Clear the quiz content
+
+  const endMessage = document.createElement('p');
+  endMessage.textContent = 'Quiz ended!';
+
+  const scoreForm = document.createElement('form');
+  scoreForm.innerHTML = `
+    <label for="initials">Enter Your Initials:</label>
+    <input type="text" id="initials" name="initials" required>
+    <button type="submit">Submit</button>
+  `;
+
+  scoreForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const initials = document.getElementById('initials').value;
+
+    // You can now record the score with the initials entered
+    // For example, send it to a server or store it in localStorage
+
+    // Here, let's just log the initials and reset the quiz
+    console.log('Initials:', initials);
+    startQuiz();
+  });
+
+  quizElement.appendChild(endMessage);
+  quizElement.appendChild(scoreForm);
+}
+
+// Function to check the selected answer
+function checkAnswer(selectedIndex) {
+  const currentQuestion = questions[currentQuestionIndex];
+  if (selectedIndex === currentQuestion.answer) {
+    alert('Correct answer!');
+  } else {
+    alert('Incorrect answer!');
+  }
+
+  currentQuestionIndex++;
+
+  if (currentQuestionIndex < questions.length) {
+    displayQuestion();
+  } else {
+    endQuiz(); // Call endQuiz when there are no more questions
+  }
+}
 
   
 
