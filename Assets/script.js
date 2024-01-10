@@ -87,33 +87,31 @@ var CorrectAnswers = 0;
     // Function to check the selected answer and whether it matches the index of the answer defined in the questions array
     // Using an alert for now to ensure function works, will revert to storing the tally to an array
     function checkAnswer(selectedIndex) {
-        const currentQuestion = questions[currentQuestionIndex];
-        if (selectedIndex === currentQuestion.answer) {
-          CorrectAnswers++;
-        } else {
-          alert('Incorrect answer!');
-        }
-      
-        currentQuestionIndex++;
-        
-        if (currentQuestionIndex < questions.length) {
-          displayQuestion();
-        } else {
-          currentQuestionIndex = 0; // Reset to the first question
-          displayQuestion();
-        }
+      const currentQuestion = questions[currentQuestionIndex];
+      if (selectedIndex === currentQuestion.answer) {
+        CorrectAnswers++;
       }
-
+    
+      currentQuestionIndex++;
+    
+      if (currentQuestionIndex < questions.length) {
+        displayQuestion();
+      } else {
+        endQuiz(); // Call endQuiz when there are no more questions
+      }
+    }
+    
     // Function to handle the countdown timer
   function countdown() {
     let secondsRemaining = 60; // Timer is set to 60 seconds
   
     function updateTimer() {
       const timerElement = document.getElementById('timer');
-      timerElement.textContent = 'Time Remaining: ' + secondsRemaining + 's';
+      timerElement.textContent = secondsRemaining + 's';
   
       if (secondsRemaining === 0) {
         checkAnswer(-1); // If no answer is selected, it will timeout
+        endQuiz();
       }
   
       secondsRemaining--;
@@ -133,24 +131,32 @@ function endQuiz() {
   quizElement.innerHTML = ''; // Clear the quiz content
 
   const endMessage = document.createElement('p');
-  endMessage.textContent = 'Quiz ended!';
+  endMessage.textContent = `Quiz over! You got ${CorrectAnswers} correct.`;
 
   const scoreForm = document.createElement('form');
   scoreForm.innerHTML = `
     <label for="initials">Enter Your Initials:</label>
     <input type="text" id="initials" name="initials" required>
-    <button type="submit">Submit</button>
-  `;
+    <button type="submit">Submit</button>`;
 
   scoreForm.addEventListener('submit', function (event) {
     event.preventDefault();
     const initials = document.getElementById('initials').value;
+    const scoreList = document.getElementById('scores');
+
+
+    const scoreItem = document.createElement('li');
+    scoreItem.textContent = `${initials}: ${CorrectAnswers} correct`
+
+    scoreList.appendChild(scoreItem);
+
+    sortScores(scoreList);
 
     // You can now record the score with the initials entered
     // For example, send it to a server or store it in localStorage
 
     // Here, let's just log the initials and reset the quiz
-    console.log('Initials:', initials);
+    CorrectAnswers = 0;
     startQuiz();
   });
 
@@ -158,23 +164,25 @@ function endQuiz() {
   quizElement.appendChild(scoreForm);
 }
 
-// Function to check the selected answer
-function checkAnswer(selectedIndex) {
-  const currentQuestion = questions[currentQuestionIndex];
-  if (selectedIndex === currentQuestion.answer) {
-    alert('Correct answer!');
-  } else {
-    alert('Incorrect answer!');
-  }
+function sortScores(scroeList) {
+  const scores = Array.from(scoreList.children);
+  scores.sort((a,b) => {
+    const scoreA = parseInt(a.textContent.split(':')[1]);
+    const scoreB = parseInt(b.textContent.split(':')[1]);
+    return scoreB - scoreA;
+  });
 
-  currentQuestionIndex++;
+  scoreList.textcontent = '';
+  scores.forEach((score) => {
+    scoreList.appendChild(score);
+  });
+}
 
   if (currentQuestionIndex < questions.length) {
     displayQuestion();
   } else {
     endQuiz(); // Call endQuiz when there are no more questions
   }
-}
 
   
 
