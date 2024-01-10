@@ -50,6 +50,13 @@ var CorrectAnswers = 0;
 //   The below lines of code set two new variables: it sets the "current" index to 0 which means to start with the first element of the questions array
 //   The second varaible sets up an undefined variable to set a countdown interval for the clock
 
+document.getElementById('startButton').addEventListener('click', function() {
+  document.getElementById('homepage').style.display = 'none'; // Hide the homepage
+  document.getElementById('quiz').style.display = 'block'; // Show the quiz
+  startQuiz(); // Start the quiz
+});
+
+
   let currentQuestionIndex = 0;
   let countdownInterval;
   

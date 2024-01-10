@@ -6,8 +6,10 @@
 
 
 #timer {
-    position:absolute;
-    left: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    color: white;
 }
 
 #question {
@@ -21,6 +23,14 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+header div span {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
 }
 
 h1 {
