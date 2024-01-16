@@ -5,11 +5,17 @@
 }
 
 
-#timer {
+#time-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    color: white;
+    color: black;
+    font-size: 44px;
+    margin-right: 40px;
+}
+
+#timer {
+    margin-left: 10px;
 }
 
 #question {
@@ -18,7 +24,7 @@
 }
 
 header {
-    background-color: blue;
+    background-color: rgb(99, 7, 99);
     height: 100px;
     display: flex;
     align-items: center;
@@ -35,8 +41,15 @@ header div span {
 
 h1 {
     color: white;
-    text-align: center;
-    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+h3 {
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 40%;
 }
 
 .quiz-container {
@@ -55,7 +68,7 @@ h1 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
     font-size: 36px;
-    width: 400px;
+    width: 700px;
     margin-top: 30px;
 }
 
@@ -63,19 +76,28 @@ h1 {
     display: flex;
     flex-direction: column;
     align-self: flex-start;
+    margin-top: 50px;
 }
 
-/* .choices-container {
-   position: relative;
-   right: 7%;
-} */
+#startButton {
+    background-color: rgb(99, 7, 99);
+    height: 100px;
+    width:150px;
+    font-size: 24px;
+    color: white;
+}
 
+#startButton:hover {
+    background-image: linear-gradient(white, pink);
+    color: black;
+}
 
 #choices button {
     display: flex;
     flex-direction: column;
     width: 400px;
     height: 50px;
+    margin-top: 40px;
     justify-content: center;
     align-items: center;
     margin-top: 10px;

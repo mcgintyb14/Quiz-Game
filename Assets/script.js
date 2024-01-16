@@ -58,6 +58,8 @@ var CorrectAnswers = 0;
 
   const quizDisplay = document.getElementById('quiz-container');
   quizDisplay.style.display = 'none';
+  const timer = document.getElementById('time-container');
+  timer.style.display = 'none'
   
   // Function to start the quiz starting with the first index of the questions array
   function startQuiz() {
@@ -69,11 +71,16 @@ var CorrectAnswers = 0;
   function showQuiz() {
     const headerElement = document.getElementById('homepage');
     const startButton = document.getElementById('startButton');
+    const timeContainer = document.getElementById('time-container'); // Get the time container element
+    const bodyText = document.getElementById('body-text');
     
     headerElement.style.display = 'none';
     startButton.style.display = 'none';
     quizDisplay.style.display = 'flex';
-    quizDisplay.style.flexDirection = 'column';  // Corrected attribute name
+    quizDisplay.style.flexDirection = 'column';
+    timeContainer.style.display = 'flex'; // Set the display property for the time container
+    bodyText.style.display = 'none'
+
     
   
     startQuiz();
@@ -145,9 +152,6 @@ var CorrectAnswers = 0;
     countdownInterval = setInterval(updateTimer, 1000);
   }
   
-  // Start the quiz when the page loads
-  startQuiz();
-
   // Function to handle the end of the quiz
 function endQuiz() {
   clearInterval(countdownInterval); // Stop the countdown timer
@@ -189,6 +193,9 @@ function endQuiz() {
 
   quizElement.appendChild(endMessage);
   quizElement.appendChild(scoreForm);
+
+  // const returnHome = document.createElement('button')
+  // returnHome.textContent = 'Return Home'
 }
 
 function displayMessage(isCorrect) {
@@ -213,7 +220,7 @@ function sortScores(scroeList) {
     return scoreB - scoreA;
   });
 
-  scoreList.textcontent = '';
+  scoreList.Content = '';
   scores.forEach((score) => {
     scoreList.appendChild(score);
   });
