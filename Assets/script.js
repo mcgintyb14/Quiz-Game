@@ -7,42 +7,42 @@ var CorrectAnswers = 0;
   const questions = [
     {
       question: 'What is the language used to structure a webpage?',
-      choices: ['CSS', 'HMTL', 'Javascript', 'Python'],
+      choices: ['1. CSS', '2. HMTL', '3. Javascript', '4. Python'],
       answer: 1 
     },
     {
       question: 'What keyword is used to declare variables in JavaScript?',
-      choices: ['var', 'declare', 'int', 'string'],
+      choices: ['1. var', '2. declare', '3. int', '4. string'],
       answer: 0
     },
     {
         question: 'Which tag is used to define an unordered list in HTML?',
-        choices: ['ul', 'ol', 'li', 'list'],
+        choices: ['1. ul', '2. ol', '3. li', '4. list'],
         answer: 0
       },
       {
         question: 'What Git command is used to create a new branch?',
-        choices: ['git push', 'git branch', 'git commit', 'git merge'],
+        choices: ['1. git push', '2. git branch', '3. git commit', '4. git merge'],
         answer: 1
       },
       {
         question: 'Which of the following is not a primitive data type in Java?',
-        choices: ['double', 'string', 'boolean', 'int'],
+        choices: ['1. double', '2. string', '3. boolean', '4. int'],
         answer: 4
       },
       {
         question: 'Which keyword is used to declare a constant in Java?',
-        choices: ['final', 'static', 'const', 'var'],
+        choices: ['1. final', '2. static', '3. const', '4. var'],
         answer: 2
       },
       {
         question: 'Which CSS property is used to create rounded corners on an element?',
-        choices: ['border-radius', 'corner-radius', 'round-corner', 'curve'],
+        choices: ['1. border-radius', '2. corner-radius', '3. round-corner', '4. curve'],
         answer: 0
       },
       {
         question: 'Which CSS pseudo-class is used to select an element when it is being hovered over by the mouse pointer?',
-        choices: [':active', ':hover', ':focus', ':target'],
+        choices: ['1. :active', '2. :hover', '3. :focus', '4. :target'],
         answer: 2
       },
   ];
@@ -50,15 +50,14 @@ var CorrectAnswers = 0;
 //   The below lines of code set two new variables: it sets the "current" index to 0 which means to start with the first element of the questions array
 //   The second varaible sets up an undefined variable to set a countdown interval for the clock
 
-document.getElementById('startButton').addEventListener('click', function() {
-  document.getElementById('homepage').style.display = 'none'; // Hide the homepage
-  document.getElementById('quiz').style.display = 'block'; // Show the quiz
-  startQuiz(); // Start the quiz
-});
+
 
 
   let currentQuestionIndex = 0;
   let countdownInterval;
+
+  const quizDisplay = document.getElementById('quiz-container');
+  quizDisplay.style.display = 'none';
   
   // Function to start the quiz starting with the first index of the questions array
   function startQuiz() {
@@ -66,6 +65,22 @@ document.getElementById('startButton').addEventListener('click', function() {
     displayQuestion();
     countdown();
   }
+  
+  function showQuiz() {
+    const headerElement = document.getElementById('homepage');
+    const startButton = document.getElementById('startButton');
+    
+    headerElement.style.display = 'none';
+    startButton.style.display = 'none';
+    quizDisplay.style.display = 'flex';
+    quizDisplay.style.flexDirection = 'column';  // Corrected attribute name
+    
+  
+    startQuiz();
+  }
+  
+  // Event listener for the "Start Quiz" button
+  document.getElementById('startButton').addEventListener('click', showQuiz);
   
   // Function to display the current question and choices
   // Function sets two different variables: one sets the current quetion variable to equal the current index of the 'questions' key from the questions array; the other defines a new element that targets the 'question' ID from the HTML code
@@ -97,6 +112,9 @@ document.getElementById('startButton').addEventListener('click', function() {
       const currentQuestion = questions[currentQuestionIndex];
       if (selectedIndex === currentQuestion.answer) {
         CorrectAnswers++;
+        displayMessage(true); // Correct answer
+      } else {
+        displayMessage(false); // Incorrect answer
       }
     
       currentQuestionIndex++;
@@ -134,6 +152,8 @@ document.getElementById('startButton').addEventListener('click', function() {
 function endQuiz() {
   clearInterval(countdownInterval); // Stop the countdown timer
 
+  quizDisplay.style.display = 'block';
+
   const quizElement = document.getElementById('quiz');
   quizElement.innerHTML = ''; // Clear the quiz content
 
@@ -169,6 +189,20 @@ function endQuiz() {
 
   quizElement.appendChild(endMessage);
   quizElement.appendChild(scoreForm);
+}
+
+function displayMessage(isCorrect) {
+  const messageContainer = document.getElementById('result');
+
+  // Create a new element (span) for the message
+  const messageElement = document.createElement('span');
+
+  messageElement.textContent = isCorrect ? 'Correct!' : 'Wrong!';
+
+  messageContainer.innerHTML = '';
+
+  // Append the new message element to the container
+  messageContainer.appendChild(messageElement);
 }
 
 function sortScores(scroeList) {
