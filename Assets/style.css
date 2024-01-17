@@ -207,3 +207,80 @@ main {
     color: black;
 }
 
+@media screen and (max-width: 450px) {
+
+    #main-container {
+        margin-top: 100px;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 16px;
+        margin-bottom: 150px;
+    }
+
+    #startButton {
+        height: 70%;
+    }
+
+    #question {
+        align-self: center;
+        font-size: 18px;
+        width: 80%;
+    }
+    
+    #time-container {
+    font-size: 16px;
+    }
+
+    #high-scores {
+        font-size: 16px;
+    }
+
+    #highScoresContainer p {
+        font-size: 20px;
+    }
+
+    #choices button {
+        height: 50%;
+        font-size: 80%;
+        width: 60%;
+    }
+
+    #choices {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #initials, #initials-label {
+        font-size: 13px;
+    }
+
+    #submit-button {
+        font-size: 13px;
+        height: 50%;
+    }
+
+    #highScoresList li {
+        font-size: 15px;
+    }
+
+    #clearLocalStorage, #returnHomeButton {
+        font-size: 11px;
+        width: 30%;
+    }
+
+    #result span {
+        font-size: 20px;
+    }
+
+    #quiz-container p,
+    #quiz-container h2 {
+        font-size: 20px !important;
+    }
+}
