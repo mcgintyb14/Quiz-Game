@@ -7,87 +7,116 @@ var CorrectAnswers = 0;
 // The third line is the Index of the correct answer in the choices array
 const questions = [
   {
-    question: 'What is the language used to structure a webpage?',
-    choices: ['1. CSS', '2. HMTL', '3. Javascript', '4. Python'],
-    answer: 1
-  },
-  {
-    question: 'What keyword is used to declare variables in JavaScript?',
-    choices: ['1. var', '2. declare', '3. int', '4. string'],
-    answer: 0
-  },
-  {
-    question: 'Who wrote the play "Romeo and Juliet"?',
-    choices: ['1. William Shakespeare', '2. Jane Austen', '3. Charles Dickens', '4. Mark Twain'],
-    answer: 0
-  },
-  {
-    question: 'Which tag is used to define an unordered list in HTML?',
-    choices: ['1. ul', '2. ol', '3. li', '4. list'],
-    answer: 0
-  },
-  {
-    question: 'In which year did the Titanic sink?',
-    choices: ['1. 1905', '2. 1931', '3. 1920', '4. 1912'],
-    answer: 3
-  },
-  {
-    question: 'What Git command is used to create a new branch?',
-    choices: ['1. git push', '2. git branch', '3. git commit', '4. git merge'],
-    answer: 1
-  },
-  {
-    question: 'What is the largest planet in our solar system?',
-    choices: ['1. Earth', '2. Jupiter', '3. Mars', '4. Venus'],
-    answer: 1
-  },
-  {
-    question: 'Which of the following is not a primitive data type in Java?',
-    choices: ['1. double', '2. string', '3. boolean', '4. int'],
-    answer: 3
-  },
-  {
-    question: 'Which element has the chemical symbol "H"?',
-    choices: ['1. Helium', '2. Nitrogen', '3. Hydrogen', '4. Carbon'],
+    question: 'Which programming language is often used for building web servers?',
+    choices: ['1. Python', '2. JavaScript', '3. Ruby', '4. Java'],
     answer: 2
   },
   {
-    question: 'Which keyword is used to declare a constant in Java?',
-    choices: ['1. final', '2. static', '3. const', '4. var'],
-    answer: 2
-  },
-  {
-    question: 'What is the capital of Japan?',
-    choices: ['1. Beijing', '2. Seoul', '3. Tokyo', '4. Bangkok'],
-    answer: 2
-  },
-  {
-    question: 'Which CSS property is used to create rounded corners on an element?',
-    choices: ['1. border-radius', '2. corner-radius', '3. round-corner', '4. curve'],
-    answer: 0
-  },
-  {
-    question: 'Who was the first woman to win a Nobel Prize?',
-    choices: ['1. Marie Curie', '2. Rosa Parks', '3. Amelia Earhart', '4. Mother Teresa'],
-    answer: 0
-  },
-  {
-    question: 'Which CSS pseudo-class is used to select an element when it is being hovered over by the mouse pointer?',
-    choices: ['1. :active', '2. :hover', '3. :focus', '4. :target'],
+    question: 'Who developed the theory of relativity?',
+    choices: ['1. Isaac Newton', '2. Albert Einstein', '3. Galileo Galilei', '4. Stephen Hawking'],
     answer: 1
   },
   {
-    question: 'What is the largest ocean on Earth?',
-    choices: ['1. Atlantic Ocean', '2. Indian Ocean', '3. Arctic Ocean', '4. Pacific Ocean'],
+    question: 'What is the capital of Australia?',
+    choices: ['1. Sydney', '2. Melbourne', '3. Canberra', '4. Brisbane'],
+    answer: 2
+  },
+  {
+    question: 'In which year did the World War II end?',
+    choices: ['1. 1943', '2. 1945', '3. 1950', '4. 1939'],
+    answer: 1
+  },
+  {
+    question: 'Which planet is known as the "Red Planet"?',
+    choices: ['1. Mars', '2. Jupiter', '3. Venus', '4. Saturn'],
+    answer: 0
+  },
+  {
+    question: 'Who is the author of the Harry Potter book series?',
+    choices: ['1. J.K. Rowling', '2. George R.R. Martin', '3. Stephen King', '4. Suzanne Collins'],
+    answer: 0
+  },
+  {
+    question: 'What is the currency of Japan?',
+    choices: ['1. Yen', '2. Won', '3. Yuan', '4. Baht'],
+    answer: 0
+  },
+  {
+    question: 'Which famous scientist developed the laws of motion and gravity?',
+    choices: ['1. Nikola Tesla', '2. Albert Einstein', '3. Isaac Newton', '4. Marie Curie'],
+    answer: 2
+  },
+  {
+    question: 'In computer science, what does HTML stand for?',
+    choices: ['1. Hyperlink and Text Markup Language', '2. Hyper Text Markup Language', '3. Hyper Transfer Markup Language', '4. High-level Text Markup Language'],
+    answer: 1
+  },
+  {
+    question: 'Who painted the Mona Lisa?',
+    choices: ['1. Vincent van Gogh', '2. Leonardo da Vinci', '3. Pablo Picasso', '4. Michelangelo'],
+    answer: 1
+  },
+  {
+    question: 'Which gas makes up the majority of Earth\'s atmosphere?',
+    choices: ['1. Nitrogen', '2. Oxygen', '3. Carbon Dioxide', '4. Hydrogen'],
+    answer: 0
+  },
+  {
+    question: 'What is the largest mammal on Earth?',
+    choices: ['1. Elephant', '2. Blue Whale', '3. Giraffe', '4. Lion'],
+    answer: 1
+  },
+  {
+    question: 'Who is known as the "Father of Computer Science"?',
+    choices: ['1. Alan Turing', '2. Bill Gates', '3. Steve Jobs', '4. Mark Zuckerberg'],
+    answer: 0
+  },
+  {
+    question: 'Which continent is the least populous?',
+    choices: ['1. Asia', '2. Africa', '3. Australia', '4. Antarctica'],
     answer: 3
   },
   {
-    question: 'What is the capital city of France?',
-    choices: ['1. London', '2. Paris', '3. Berlin', '4. Rome'],
+    question: 'What is the chemical symbol for gold?',
+    choices: ['1. Au', '2. Ag', '3. Fe', '4. Hg'],
+    answer: 0
+  },
+  {
+    question: 'Who wrote the famous play "Hamlet"?',
+    choices: ['1. William Shakespeare', '2. Charles Dickens', '3. Jane Austen', '4. F. Scott Fitzgerald'],
+    answer: 0
+  },
+  {
+    question: 'What is the speed of light in a vacuum?',
+    choices: ['1. 300,000 km/s', '2. 150,000 km/s', '3. 500,000 km/s', '4. 200,000 km/s'],
+    answer: 0
+  },
+  {
+    question: 'Which element is essential for human life and makes up the majority of the human body?',
+    choices: ['1. Carbon', '2. Oxygen', '3. Hydrogen', '4. Nitrogen'],
     answer: 1
   },
-  
-];
+  {
+    question: 'In which year did the Berlin Wall fall, marking the end of the Cold War?',
+    choices: ['1. 1985', '2. 1990', '3. 1989', '4. 1995'],
+    answer: 2
+  },
+  {
+    question: 'What is the capital of Brazil?',
+    choices: ['1. Rio de Janeiro', '2. Brasília', '3. São Paulo', '4. Buenos Aires'],
+    answer: 1
+  },
+  {
+    question: 'Which country is known as the "Land of the Rising Sun"?',
+    choices: ['1. China', '2. Japan', '3. South Korea', '4. Vietnam'],
+    answer: 2
+  },
+  {
+    question: 'What is the square root of 144?',
+    choices: ['1. 11', '2. 12'],
+    answer: 3
+  }
+]
 
 //   The below lines of code set two new variables: it sets the "current" index to 0 which means to start with the first element of the questions array
 //   The second varaible sets up an undefined variable to set a countdown interval for the clock
