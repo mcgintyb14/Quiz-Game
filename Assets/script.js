@@ -107,6 +107,7 @@ function startQuiz() {
   countdown();
 }
 
+// function to prompt the quiz to prompt the quiz to start and display the elements that are included in the quiz
 function showQuiz() {
   const headerElement = document.getElementById('homepage');
   const startButton = document.getElementById('startButton');
@@ -201,7 +202,7 @@ function endQuiz() {
   const quizElement = document.getElementById('quiz-container');
   quizElement.innerHTML = ''; // Clear the quiz content
 
-
+// code to create new elements to be displayed on the page when the quiz ends, as well as code to style the text in javascript
   const endMessageHeader = document.createElement('h2');
   endMessageHeader.textContent = 'All done!';
   endMessageHeader.style.fontSize = '45px';
@@ -209,12 +210,14 @@ function endQuiz() {
   endMessage.textContent = `You got ${CorrectAnswers} correct.`;
   endMessage.style.fontSize = '40px';
 
+  // code to create a form to input initals and score
   const scoreForm = document.createElement('form');
   scoreForm.innerHTML = `
       <label id="initials-label" for="initials">Enter Initials:</label>
       <input type="text" id="initials" name="initials" required>
       <button id="submit-button" type="submit">Submit</button>`;
 
+  // event listener for when the form is suvbmitted, stores the scores in local storage below as well as redirects the user to the high scores page by calling the showHighScores function 
   scoreForm.addEventListener('submit', function (event) {
     event.preventDefault();
     showHighScores();
@@ -239,6 +242,7 @@ function endQuiz() {
     displayQuestion();
   });
 
+  // adding elements to the page when the quiz ends; includes the score messages as well as the form to input initials
   quizElement.appendChild(endMessageHeader);
   quizElement.appendChild(endMessage);
   quizElement.appendChild(scoreForm);
@@ -257,6 +261,7 @@ function displayMessage(isCorrect) {
   messageContainer.appendChild(messageElement);
 }
 
+// function to hide all main quiz elements from the page; this is meant to be called when the high scores page is displayed
 function hideQuizElements() {
   const mainContainer = document.getElementById('main-container');
   const timerContainer = document.getElementById('time-container');
@@ -281,12 +286,14 @@ function showHighScores() {
   highScoresContainer.style.display = 'block';
   highScoreButton.style.display = 'none'
 
+  // function to pull submissions from local storage and sort them from highest to lowest number of correct
   const submissions = JSON.parse(localStorage.getItem('submissions')) || [];
   const sortedSubmissions = submissions.sort((a, b) => b.score - a.score);
 
   highScoresList = document.getElementById('highScoresList');
   highScoresList.innerHTML = ''; // Clear previous entries
 
+  // function to add the submissions as new list items in the high scores page
   sortedSubmissions.forEach((submission) => {
     const scoreItem = document.createElement('li');
     scoreItem.textContent = `${submission.initials}: ${submission.score} correct`;
@@ -299,7 +306,7 @@ function showHighScores() {
 
 }
 
-
+// event listener for the high scores button in the top left which calls the showHighScores function
 const highScoreButton = document.getElementById('high-scores');
 highScoreButton.addEventListener('click', showHighScores);
 
