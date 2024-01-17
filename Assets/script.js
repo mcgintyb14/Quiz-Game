@@ -155,7 +155,6 @@ function displayQuestion() {
 }
 
 // Function to check the selected answer and whether it matches the index of the answer defined in the questions array
-// Using an alert for now to ensure function works, will revert to storing the tally to an array
 function checkAnswer(selectedIndex) {
   const currentQuestion = questions[currentQuestionIndex];
   if (selectedIndex === currentQuestion.answer) {
@@ -195,7 +194,6 @@ function countdown() {
 
 // Function to handle the end of the quiz
 function endQuiz() {
-  console.log('End quiz function called'); // Add this log
   clearInterval(countdownInterval); // Stop the countdown timer
 
   quizDisplay.style.display = 'block';
@@ -235,8 +233,6 @@ function endQuiz() {
     submissions.push({ initials, score: CorrectAnswers });
     localStorage.setItem('submissions', JSON.stringify(submissions));
 
-    console.log('Submissions in local storage:', submissions); // Add this log
-
     // Reset variables and display the first question for a new quiz
     CorrectAnswers = 0;
     currentQuestionIndex = 0;
@@ -266,7 +262,7 @@ function hideQuizElements() {
   const timerContainer = document.getElementById('time-container');
   const highScoresContainer = document.getElementById('highScoresContainer');
   const resultsContainer = document.getElementById('results-container');
-  const homepage = document.getElementById('homepage'); // Add this line
+  const homepage = document.getElementById('homepage');
 
   console.log(homepage);
 
