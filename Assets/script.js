@@ -67,7 +67,6 @@ function startQuiz() {
   currentQuestionIndex = 0;
   displayQuestion();
   countdown();
-  highScoresList.style.display = 'none'
 }
 
 function showQuiz() {
@@ -75,6 +74,7 @@ function showQuiz() {
   const startButton = document.getElementById('startButton');
   const timeContainer = document.getElementById('time-container'); // Get the time container element
   const bodyText = document.getElementById('body-text');
+  const results = document.getElementById('result');
 
   headerElement.style.display = 'none';
   startButton.style.display = 'none';
@@ -82,6 +82,7 @@ function showQuiz() {
   quizDisplay.style.flexDirection = 'column';
   timeContainer.style.display = 'flex'; // Set the display property for the time container
   bodyText.style.display = 'none'
+  results.style.cssText = 'display: flex; flex-direction: row; justify-content: center; padding-top: 10px; font-size: 30px; border-top: solid grey 2px; width: 50%; color: grey;';
 
 
 
@@ -225,13 +226,19 @@ function hideQuizElements() {
   const mainContainer = document.getElementById('main-container');
   const timerContainer = document.getElementById('time-container');
   const highScoresContainer = document.getElementById('highScoresContainer');
+  const resultsContainer = document.getElementById('results-container');
+  const homepage = document.getElementById('homepage'); // Add this line
+
+  console.log(homepage);
 
   mainContainer.style.display = 'none';
   timerContainer.style.display = 'none';
-  homepage.style.display = 'none';
-  highScoresContainer.style.display = 'none'; // Add this line to hide high scores container
+  resultsContainer.style.display = 'none';
+  homepage.style.display = 'none'; // Hide homepage
+  // highScoresContainer.style.display = 'flex';
   // Hide other elements
 }
+
 
 
 function showHighScores() {
@@ -243,7 +250,7 @@ function showHighScores() {
   const submissions = JSON.parse(localStorage.getItem('submissions')) || [];
   const sortedSubmissions = submissions.sort((a, b) => b.score - a.score);
 
-  const highScoresList = document.getElementById('highScoresList');
+  highScoresList = document.getElementById('highScoresList');
   highScoresList.innerHTML = ''; // Clear previous entries
 
   sortedSubmissions.forEach((submission) => {
@@ -254,12 +261,15 @@ function showHighScores() {
 
   // Show or hide the clearLocalStorage button based on highScoresContainer visibility
   const clearLocalStorageButton = document.getElementById('clearLocalStorage');
-  clearLocalStorageButton.style.display = highScoresContainer.style.display === 'block' ? 'block' : 'none';
+  clearLocalStorageButton.style.display = 'block'; // Assuming you always want to display the clearLocalStorage button
+
 }
 
 
 const highScoreButton = document.getElementById('high-scores');
 highScoreButton.addEventListener('click', showHighScores);
+
+
 
 function sortScores(scoreList) {
   const scores = Array.from(scoreList.children);
@@ -279,7 +289,8 @@ function sortScores(scoreList) {
 function clearLocalStorage() {
   localStorage.removeItem('submissions');
   console.log('Local storage cleared');
-  // Optionally, you can add logic to update your UI or perform other actions after clearing local storage
+  const highScoresList = document.getElementById('highScoresList');
+  highScoresList.innerHTML = '';
 }
 
 // Get the button element

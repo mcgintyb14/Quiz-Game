@@ -10,7 +10,7 @@
     flex-direction: row;
     justify-content: flex-end;
     color: black;
-    font-size: 44px;
+    font-size: 30px;
     margin-right: 40px;
 }
 
@@ -24,37 +24,52 @@
 }
 
 #homepage {
-    background-color: rgb(99, 7, 99);
-    height: 100px;
+    height: 150px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
+}
+
+#highScoresContainer p {
+    display: flex;
+    justify-content: center;
+    font-size: 34px;
+    
+} 
+
+#high-score-container {
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1000;
+    position: fixed;
+    top: 2%;
+    left: 2%;
 }
 
 #high-scores {
-    text-align: right;
-    z-index: 1;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    color: rgb(202, 148, 157);
+    font-size: 20px;
 }
 
-header div span {
-    color: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-
+#high-scores:hover {
+    color: black;
 }
 
 h1 {
-    color: white;
-    display: flex;
-    justify-content: center;
+    color: black;
+    font-size: 50px;
 }
 
 h3 {
-    font-size: 35px;
+    font-size: 29px;
     font-weight: bold;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    width: 40%;
+    width: 45%;
 }
 
 .quiz-container {
@@ -125,21 +140,10 @@ h3 {
     margin-top: 100px;
 }
 
-.results-container {
+#results-container {
     display: flex;
     justify-content: center;
-    margin-top: 70px;
-}
-
-#result {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding-top: 10px;
-    font-size: 30px;
-    border-top: solid grey 2px;
-    width: 50%;
-    color: grey;
+    margin-top: 80px;
 }
 
 main {
@@ -165,6 +169,15 @@ main {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    border: solid black 3px;
+}
+
+#highScoresList li {
+    border: solid white 2px;
     font-size: 34px;
+    color: black;
+    width: 50%;
+    height: 50px;
+    margin-top: 10px;
 }
 
