@@ -16,13 +16,13 @@ To use this site, there are three main interactive functions to call out.
 
 ## Screenshots
 Screenshot of the homepage
-![Alt text](Assets\Images\homepage.png)
+![Homepage](Assets\Images\homepage.png)
 
 Screenshot of the trivia questions
-![Alt text](Assets\Images\quiz.png)
+![Quiz](Assets\Images\quiz.png)
 
 Screenshot of the High Scores page
-![Alt text](Assets\Images\highscores.png)
+![High Scores](Assets\Images\highscores.png)
 
 ## Link
 https://mcgintyb14.github.io/Quiz-Game/index.html
