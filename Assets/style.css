@@ -182,8 +182,8 @@ main {
 
 #highScoresList li {
     border: solid white 2px;
-    font-size: 34px;
-    font-family: cursive;
+    font-size: 30px;
+    font-family: 'Caveat', cursive;
     color: black;
     width: 50%;
     height: 50px;
@@ -255,8 +255,9 @@ main {
         margin-top: 10px;
     }
 
-    #choices button:hover {
+    #choices button:hover, #choices button:active {
         background-color: purple;
+        color: white;
     }
 
     #choices {
