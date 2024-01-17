@@ -17,9 +17,19 @@ const questions = [
     answer: 0
   },
   {
+    question: 'Who wrote the play "Romeo and Juliet"?',
+    choices: ['1. William Shakespeare', '2. Jane Austen', '3. Charles Dickens', '4. Mark Twain'],
+    answer: 0
+  },
+  {
     question: 'Which tag is used to define an unordered list in HTML?',
     choices: ['1. ul', '2. ol', '3. li', '4. list'],
     answer: 0
+  },
+  {
+    question: 'In which year did the Titanic sink?',
+    choices: ['1. 1905', '2. 1931', '3. 1920', '4. 1912'],
+    answer: 3
   },
   {
     question: 'What Git command is used to create a new branch?',
@@ -27,13 +37,28 @@ const questions = [
     answer: 1
   },
   {
+    question: 'What is the largest planet in our solar system?',
+    choices: ['1. Earth', '2. Jupiter', '3. Mars', '4. Venus'],
+    answer: 1
+  },
+  {
     question: 'Which of the following is not a primitive data type in Java?',
     choices: ['1. double', '2. string', '3. boolean', '4. int'],
-    answer: 4
+    answer: 3
+  },
+  {
+    question: 'Which element has the chemical symbol "H"?',
+    choices: ['1. Helium', '2. Nitrogen', '3. Hydrogen', '4. Carbon'],
+    answer: 2
   },
   {
     question: 'Which keyword is used to declare a constant in Java?',
     choices: ['1. final', '2. static', '3. const', '4. var'],
+    answer: 2
+  },
+  {
+    question: 'What is the capital of Japan?',
+    choices: ['1. Beijing', '2. Seoul', '3. Tokyo', '4. Bangkok'],
     answer: 2
   },
   {
@@ -42,17 +67,30 @@ const questions = [
     answer: 0
   },
   {
+    question: 'Who was the first woman to win a Nobel Prize?',
+    choices: ['1. Marie Curie', '2. Rosa Parks', '3. Amelia Earhart', '4. Mother Teresa'],
+    answer: 0
+  },
+  {
     question: 'Which CSS pseudo-class is used to select an element when it is being hovered over by the mouse pointer?',
     choices: ['1. :active', '2. :hover', '3. :focus', '4. :target'],
-    answer: 2
+    answer: 1
   },
+  {
+    question: 'What is the largest ocean on Earth?',
+    choices: ['1. Atlantic Ocean', '2. Indian Ocean', '3. Arctic Ocean', '4. Pacific Ocean'],
+    answer: 3
+  },
+  {
+    question: 'What is the capital city of France?',
+    choices: ['1. London', '2. Paris', '3. Berlin', '4. Rome'],
+    answer: 1
+  },
+  
 ];
 
 //   The below lines of code set two new variables: it sets the "current" index to 0 which means to start with the first element of the questions array
 //   The second varaible sets up an undefined variable to set a countdown interval for the clock
-
-
-
 
 let currentQuestionIndex = 0;
 let countdownInterval;
@@ -240,13 +278,12 @@ function hideQuizElements() {
   // Hide other elements
 }
 
-
-
 function showHighScores() {
   hideQuizElements();
 
   const highScoresContainer = document.getElementById('highScoresContainer');
   highScoresContainer.style.display = 'block';
+  highScoreButton.style.display = 'none'
 
   const submissions = JSON.parse(localStorage.getItem('submissions')) || [];
   const sortedSubmissions = submissions.sort((a, b) => b.score - a.score);

@@ -33,7 +33,10 @@
 #highScoresContainer p {
     display: flex;
     justify-content: center;
-    font-size: 34px;
+    font-size: 50px;
+    font-family: cursive;
+    font-weight: bolder;
+    color: rgb(0, 0, 0);
     
 } 
 
@@ -175,6 +178,7 @@ main {
 #highScoresList li {
     border: solid white 2px;
     font-size: 34px;
+    font-family: cursive;
     color: black;
     width: 50%;
     height: 50px;
@@ -190,7 +194,9 @@ main {
 #clearLocalStorage, #returnHomeButton {
     margin-left: 10px;
     background-color: navy;
-    height: 30px;
+    height: 40px;
+    width: 15%;
+    font-size: 15px;
     border-radius: 7px;
     border: none;
     color: white;
