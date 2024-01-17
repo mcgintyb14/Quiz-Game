@@ -255,6 +255,10 @@ main {
         margin-top: 10px;
     }
 
+    #choices button:hover {
+        background-color: purple;
+    }
+
     #choices {
         display: flex;
         flex-direction: column;
