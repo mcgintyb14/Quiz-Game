@@ -181,3 +181,23 @@ main {
     margin-top: 10px;
 }
 
+#scores-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#clearLocalStorage, #returnHomeButton {
+    margin-left: 10px;
+    background-color: navy;
+    height: 30px;
+    border-radius: 7px;
+    border: none;
+    color: white;
+}
+
+#clearLocalStorage:hover, #returnHomeButton:hover {
+    background-color: pink;
+    color: black;
+}
+

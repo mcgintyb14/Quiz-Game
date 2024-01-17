@@ -181,6 +181,7 @@ function endQuiz() {
 
   scoreForm.addEventListener('submit', function (event) {
     event.preventDefault();
+    showHighScores();
     const initials = document.getElementById('initials').value;
     const scoreList = document.getElementById('highScoresList');
 
@@ -298,6 +299,13 @@ const clearLocalStorageButton = document.getElementById('clearLocalStorage');
 
 // click event listener to the button
 clearLocalStorageButton.addEventListener('click', clearLocalStorage);
+
+const returnHomeButton = document.getElementById('returnHomeButton');
+
+returnHomeButton.addEventListener('click', function () {
+  // Redirect to the homepage
+  window.location.href = 'index.html';
+});
 
 
 
