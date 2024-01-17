@@ -45,7 +45,7 @@
     justify-content: flex-end;
     z-index: 1000;
     position: fixed;
-    top: 2%;
+    top: 1.2%;
     left: 2%;
 }
 
@@ -232,7 +232,7 @@ main {
 
     #question {
         align-self: center;
-        font-size: 18px;
+        font-size: 25px;
         width: 80%;
     }
     
@@ -249,9 +249,10 @@ main {
     }
 
     #choices button {
-        height: 50%;
+        height: 50px;
         font-size: 80%;
         width: 60%;
+        margin-top: 10px;
     }
 
     #choices {
@@ -265,9 +266,18 @@ main {
         font-size: 13px;
     }
 
+    form {
+        width: 110%;
+    }
+
+    #initials {
+        width: 40%;
+    }
+
     #submit-button {
         font-size: 13px;
         height: 50%;
+        width: 25%;
     }
 
     #highScoresList li {
