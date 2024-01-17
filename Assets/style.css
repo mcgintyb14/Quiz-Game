@@ -23,7 +23,7 @@
     
 }
 
-header {
+#homepage {
     background-color: rgb(99, 7, 99);
     height: 100px;
     display: flex;
@@ -160,3 +160,11 @@ main {
     width: 120px;
     margin-left: 10px;
 }
+
+#highScoresList {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-size: 34px;
+}
+

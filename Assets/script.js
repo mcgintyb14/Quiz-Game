@@ -67,6 +67,7 @@ function startQuiz() {
   currentQuestionIndex = 0;
   displayQuestion();
   countdown();
+  highScoresList.style.display = 'none'
 }
 
 function showQuiz() {
@@ -155,6 +156,7 @@ function countdown() {
 
 // Function to handle the end of the quiz
 function endQuiz() {
+  console.log('End quiz function called'); // Add this log
   clearInterval(countdownInterval); // Stop the countdown timer
 
   quizDisplay.style.display = 'block';
@@ -179,7 +181,7 @@ function endQuiz() {
   scoreForm.addEventListener('submit', function (event) {
     event.preventDefault();
     const initials = document.getElementById('initials').value;
-    const scoreList = document.getElementById('scores');
+    const scoreList = document.getElementById('highScoresList');
 
     const scoreItem = document.createElement('li');
     scoreItem.textContent = `${initials}: ${CorrectAnswers} correct`;
@@ -192,6 +194,8 @@ function endQuiz() {
     const submissions = JSON.parse(localStorage.getItem('submissions')) || [];
     submissions.push({ initials, score: CorrectAnswers });
     localStorage.setItem('submissions', JSON.stringify(submissions));
+
+    console.log('Submissions in local storage:', submissions); // Add this log
 
     // Reset variables and display the first question for a new quiz
     CorrectAnswers = 0;
@@ -218,14 +222,17 @@ function displayMessage(isCorrect) {
 }
 
 function hideQuizElements() {
-  const quizContainer = document.getElementById('quiz-container');
+  const mainContainer = document.getElementById('main-container');
   const timerContainer = document.getElementById('time-container');
-  // Add other elements you want to hide during high scores display
+  const highScoresContainer = document.getElementById('highScoresContainer');
 
-  quizContainer.style.display = 'none';
+  mainContainer.style.display = 'none';
   timerContainer.style.display = 'none';
+  homepage.style.display = 'none';
+  highScoresContainer.style.display = 'none'; // Add this line to hide high scores container
   // Hide other elements
 }
+
 
 function showHighScores() {
   hideQuizElements();
@@ -244,12 +251,17 @@ function showHighScores() {
     scoreItem.textContent = `${submission.initials}: ${submission.score} correct`;
     highScoresList.appendChild(scoreItem);
   });
+
+  // Show or hide the clearLocalStorage button based on highScoresContainer visibility
+  const clearLocalStorageButton = document.getElementById('clearLocalStorage');
+  clearLocalStorageButton.style.display = highScoresContainer.style.display === 'block' ? 'block' : 'none';
 }
+
 
 const highScoreButton = document.getElementById('high-scores');
 highScoreButton.addEventListener('click', showHighScores);
 
-function sortScores(scroeList) {
+function sortScores(scoreList) {
   const scores = Array.from(scoreList.children);
   scores.sort((a, b) => {
     const scoreA = parseInt(a.textContent.split(':')[1]);
@@ -262,6 +274,20 @@ function sortScores(scroeList) {
     scoreList.appendChild(score);
   });
 }
+
+// Function to clear local storage
+function clearLocalStorage() {
+  localStorage.removeItem('submissions');
+  console.log('Local storage cleared');
+  // Optionally, you can add logic to update your UI or perform other actions after clearing local storage
+}
+
+// Get the button element
+const clearLocalStorageButton = document.getElementById('clearLocalStorage');
+
+// click event listener to the button
+clearLocalStorageButton.addEventListener('click', clearLocalStorage);
+
 
 
 
