@@ -73,6 +73,7 @@ h3 {
     font-weight: bold;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 45%;
+    margin-bottom: 150px;
 }
 
 .quiz-container {
@@ -135,6 +136,10 @@ h3 {
     background-color: pink;
     color: black;
 } 
+
+#choices button:active {
+    background-color: purple;
+}
 
 #quiz, #scores {
     display: flex;
@@ -219,7 +224,6 @@ main {
 
     h3 {
         font-size: 16px;
-        margin-bottom: 150px;
     }
 
     #startButton {
