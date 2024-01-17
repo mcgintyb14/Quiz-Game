@@ -1,5 +1,6 @@
   // Setting variables to store the number of correct and incorrect answers
-var CorrectAnswers = 0;
+  let messageElement;
+  var CorrectAnswers = 0;
 
   
   // Questions array with objects containing question, choices, and answer
@@ -153,61 +154,60 @@ var CorrectAnswers = 0;
   }
   
   // Function to handle the end of the quiz
-function endQuiz() {
-  clearInterval(countdownInterval); // Stop the countdown timer
+  function endQuiz() {
+    clearInterval(countdownInterval); // Stop the countdown timer
+  
+    quizDisplay.style.display = 'block';
+  
+    const quizElement = document.getElementById('quiz-container');
+    quizElement.innerHTML = ''; // Clear the quiz content
+  
 
-  quizDisplay.style.display = 'block';
-
-  const quizElement = document.getElementById('quiz');
-  quizElement.innerHTML = ''; // Clear the quiz content
-
-  const endMessage = document.createElement('p');
-  endMessage.textContent = `Quiz over! You got ${CorrectAnswers} correct.`;
-
-  const scoreForm = document.createElement('form');
-  scoreForm.innerHTML = `
-    <label for="initials">Enter Your Initials:</label>
-    <input type="text" id="initials" name="initials" required>
-    <button type="submit">Submit</button>`;
-
-  scoreForm.addEventListener('submit', function (event) {
-    event.preventDefault();
-    const initials = document.getElementById('initials').value;
-    const scoreList = document.getElementById('scores');
-
-
-    const scoreItem = document.createElement('li');
-    scoreItem.textContent = `${initials}: ${CorrectAnswers} correct`
-
-    scoreList.appendChild(scoreItem);
-
-    sortScores(scoreList);
-
-    // You can now record the score with the initials entered
-    // For example, send it to a server or store it in localStorage
-
-    // Here, let's just log the initials and reset the quiz
-    CorrectAnswers = 0;
-    startQuiz();
-  });
-
-  quizElement.appendChild(endMessage);
-  quizElement.appendChild(scoreForm);
-
-  // const returnHome = document.createElement('button')
-  // returnHome.textContent = 'Return Home'
-}
+    const endMessageHeader = document.createElement('h2');
+    endMessageHeader.textContent = 'All done!';
+    endMessageHeader.style.fontSize = '45px';
+    const endMessage = document.createElement('p');
+    endMessage.textContent = `You got ${CorrectAnswers} correct.`;
+    endMessage.style.fontSize = '40px';
+  
+    const scoreForm = document.createElement('form');
+    scoreForm.innerHTML = `
+      <label id="initials-label" for="initials">Enter Initials:</label>
+      <input type="text" id="initials" name="initials" required>
+      <button id="submit-button" type="submit">Submit</button>`;
+  
+    scoreForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const initials = document.getElementById('initials').value;
+      const scoreList = document.getElementById('scores');
+  
+      const scoreItem = document.createElement('li');
+      scoreItem.textContent = `${initials}: ${CorrectAnswers} correct`;
+  
+      scoreList.appendChild(scoreItem);
+  
+      sortScores(scoreList);
+  
+      // Reset variables and display the first question for a new quiz
+      CorrectAnswers = 0;
+      currentQuestionIndex = 0;
+      displayQuestion();
+    });
+  
+    quizElement.appendChild(endMessageHeader);
+    quizElement.appendChild(endMessage);
+    quizElement.appendChild(scoreForm);
+    messageElement.remove();
+  }
+  
 
 function displayMessage(isCorrect) {
   const messageContainer = document.getElementById('result');
-
   // Create a new element (span) for the message
-  const messageElement = document.createElement('span');
+  messageElement = document.createElement('span');
 
   messageElement.textContent = isCorrect ? 'Correct!' : 'Wrong!';
-
   messageContainer.innerHTML = '';
-
   // Append the new message element to the container
   messageContainer.appendChild(messageElement);
 }
@@ -226,11 +226,6 @@ function sortScores(scroeList) {
   });
 }
 
-  if (currentQuestionIndex < questions.length) {
-    displayQuestion();
-  } else {
-    endQuiz(); // Call endQuiz when there are no more questions
-  }
 
   
 
