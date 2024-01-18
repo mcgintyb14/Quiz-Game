@@ -183,7 +183,7 @@ main {
 #highScoresList li {
     border: solid white 2px;
     font-size: 30px;
-    font-family: 'Caveat', cursive;
+    font-family: Arial, Helvetica, sans-serif;
     color: black;
     width: 50%;
     height: 50px;

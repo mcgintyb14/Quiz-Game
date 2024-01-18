@@ -278,13 +278,10 @@ function displayMessage(isCorrect) {
   const messageContainer = document.getElementById('result');
   // Create a new element (span) for the message
   messageElement = document.createElement('span');
-  messageElement = document.createElement('img');
-  messageElement.setAttribute('src', './Assets/Images/dumbass.gif')
 
 
   messageElement.textContent = isCorrect ? 'Correct!' : 'Wrong!';
   messageContainer.innerHTML = '';
-  nessafeEle
   // Append the new message element to the container
   messageContainer.appendChild(messageElement);
 }
