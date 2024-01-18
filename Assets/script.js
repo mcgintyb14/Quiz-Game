@@ -7,11 +7,6 @@ var CorrectAnswers = 0;
 // The third line is the Index of the correct answer in the choices array
 const questions = [
   {
-    question: 'Which programming language is often used for building web servers?',
-    choices: ['1. Python', '2. JavaScript', '3. Ruby', '4. Java'],
-    answer: 2
-  },
-  {
     question: 'Who developed the theory of relativity?',
     choices: ['1. Isaac Newton', '2. Albert Einstein', '3. Galileo Galilei', '4. Stephen Hawking'],
     answer: 1
@@ -283,9 +278,13 @@ function displayMessage(isCorrect) {
   const messageContainer = document.getElementById('result');
   // Create a new element (span) for the message
   messageElement = document.createElement('span');
+  messageElement = document.createElement('img');
+  messageElement.setAttribute('src', './Assets/Images/dumbass.gif')
+
 
   messageElement.textContent = isCorrect ? 'Correct!' : 'Wrong!';
   messageContainer.innerHTML = '';
+  nessafeEle
   // Append the new message element to the container
   messageContainer.appendChild(messageElement);
 }
